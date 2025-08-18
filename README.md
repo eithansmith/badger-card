@@ -22,7 +22,7 @@ fullscreen.
 -   USB cable and flashing tool (`tinygo flash` or
     [picotool](https://github.com/raspberrypi/picotool)).
 
-## Project Structure
+## Project Files
 
     .
     ├── device.go   # Hardware setup (pins, SPI, display)

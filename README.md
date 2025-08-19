@@ -10,7 +10,7 @@ fullscreen.
 
 -   Initializes the UC8151 e-ink controller over SPI.
 -   Configures LED and button pins (A, B, C, Up, Down).
--   Draws an embedded bitmap (`output.go`) at 296×128 pixels.
+-   Draws an embedded bitmap at 296×128 pixels or a slideshow of pages, controllable by up/down button press.
 -   Shows errors directly on the e-ink display (with TinyFont).
 -   Puts the device to sleep after drawing, preserving battery life.
 
@@ -22,40 +22,30 @@ fullscreen.
 -   USB cable and flashing tool (`tinygo flash` or
     [picotool](https://github.com/raspberrypi/picotool)).
 
-## Project Files
+## Project Modules
 
     .
-    ├── device.go   # Hardware setup (pins, SPI, display)
-    ├── error.go    # Utility to render error messages on screen
-    ├── main.go     # Entry point: draws image, handles sleep
-    ├── output.go   # Embedded []byte image data (296x128 monochrome)
+    ├── button     # Button Manager (polling-based buttons (no interrupts)
+    ├── cmd        # Programs such as blink, single_img, slideshow
+    ├── device     # Hardware setup (pins, SPI, display)
+    ├── output     # Storage of PNG files and slice byte arrays
+    ├── syserror   # Utility to render error messages on screen
 
 ## Building and Flashing
 
 To build and flash directly to the Badger 2040W:
 
 ``` bash
-tinygo flash -target=pico .
+tinygo flash -target=badger2040-w .
 ```
-
-Or, to build a UF2 file you can drag-and-drop:
-
-``` bash
-tinygo build -o firmware.uf2 -target=pico .
-```
-
-(Use `-target=badger2040` if you have a custom board definition
-available in your TinyGo installation.)
 
 ## Modifying the Image
 
-The bitmap is defined in **`output.go`**:
+The bitmap stored in /output is defined in **`filename.go`**:
 
 ``` go
-const OutputWidth = 296
-const OutputHeight = 128
 
-var Output = []byte{ ... }
+var FileName = []byte{ ... }
 ```
 
 You can replace this byte array with your own generated image data.\

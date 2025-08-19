@@ -3,19 +3,12 @@ package main
 import (
 	"badger_card/device"
 	"badger_card/output"
+	"badger_card/output/single_img"
 	"badger_card/syserror"
-	"image/color"
 	"log"
 	"time"
 
 	"tinygo.org/x/drivers/pixel"
-)
-
-var (
-	black       = color.RGBA{R: 1, G: 1, B: 1, A: 255}
-	white       = color.RGBA{A: 255}
-	w     int16 = 296
-	h     int16 = 128
 )
 
 func drawScreen(dev *device.Device) error {
@@ -27,7 +20,7 @@ func drawScreen(dev *device.Device) error {
 		}
 	}()
 
-	image := pixel.NewImageFromBytes[pixel.Monochrome](output.OutputWidth, output.OutputHeight, output.Output)
+	image := pixel.NewImageFromBytes[pixel.Monochrome](output.Width, output.Height, single_img.Simple)
 
 	err = dev.DrawBitmap(0, 0, image)
 	if err != nil {
@@ -37,6 +30,7 @@ func drawScreen(dev *device.Device) error {
 	return nil
 }
 
+// main (simple image) draws a single image as stored in output/simple
 func main() {
 	var err error
 

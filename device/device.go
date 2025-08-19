@@ -3,6 +3,7 @@ package device
 import (
 	"fmt"
 	"machine"
+
 	"tinygo.org/x/drivers/uc8151"
 )
 
@@ -27,27 +28,18 @@ func New() (*Device, error) {
 
 	aBtn := machine.BUTTON_A
 	aBtn.Configure(machine.PinConfig{Mode: machine.PinInput})
+
 	bBtn := machine.BUTTON_B
 	bBtn.Configure(machine.PinConfig{Mode: machine.PinInput})
+
 	cBtn := machine.BUTTON_C
 	cBtn.Configure(machine.PinConfig{Mode: machine.PinInput})
 
 	upBtn := machine.BUTTON_UP
 	upBtn.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
-	err := upBtn.SetInterrupt(machine.PinRising, func(p machine.Pin) {
-		actLED.Set(true)
-	})
-	if err != nil {
-		return nil, fmt.Errorf("setting up interrupt: %w", err)
-	}
+
 	downBtn := machine.BUTTON_DOWN
 	downBtn.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
-	err = downBtn.SetInterrupt(machine.PinRising, func(p machine.Pin) {
-		actLED.Set(false)
-	})
-	if err != nil {
-		return nil, fmt.Errorf("setting up interrupt: %w", err)
-	}
 
 	display, err := createDisplay()
 	if err != nil {

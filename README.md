@@ -1,9 +1,8 @@
 # Badger 2040W TinyGo Image Demo
 
 This project demonstrates how to use [TinyGo](https://tinygo.org/) to
-perform graphical utilities such as drawing a raw byte array image onto the [Pimoroni Badger
-2040W](https://shop.pimoroni.com/products/badger-2040) e-ink display.\ It sets up the device, loads a `[]byte` image, and renders it
-fullscreen.
+perform graphical operations such as drawing a raw byte array image onto the [Pimoroni Badger
+2040W](https://shop.pimoroni.com/products/badger-2040) e-ink display.
 
 ## Features
 
@@ -40,7 +39,7 @@ tinygo flash -target=badger2040-w .
 
 ## Modifying Images
 
-Bitmap stored in /output is defined in **`filename.go`** (filename is a placeholder, use whatever name you prefer):
+Bitmaps stored in /output defined in **`filename.go`** (filename is a placeholder, use whatever name you prefer):
 
 ``` go
 
@@ -48,7 +47,7 @@ var FileName = []byte{ ... }
 ```
 
 You can replace this byte array with your own generated image data.\
-The example uses `pixel.NewImageFromBytes[pixel.Monochrome]` to
+This project uses `pixel.NewImageFromBytes[pixel.Monochrome]` to
 interpret the slice.
 
 I wrote a separate Go program to help with the monochrome PNG to byte array conversion. You can find it [here](https://github.com/eithansmith/image2bytes).  

@@ -57,11 +57,11 @@ I wrote a separate Go program to help with the monochrome PNG to byte array conv
 ## Usage
 
 1.  Flash the firmware to your Badger 2040W.\
-2.  The device clears the screen, draws the embedded image, waits 5
+2.  The device clears the screen, draws the screen (based on cmd program logic), waits 5
     seconds, and then sleeps.\
 3.  If an error occurs, it will be displayed as text on the screen
     instead of crashing silently.
 
 ## License
 
-MIT (or whatever license you prefer).
+MIT.

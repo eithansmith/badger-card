@@ -2,8 +2,7 @@
 
 This project demonstrates how to use [TinyGo](https://tinygo.org/) to
 perform graphical utilities such as drawing a raw byte array image onto the [Pimoroni Badger
-2040W](https://shop.pimoroni.com/products/badger-2040) e-ink display.\
-It sets up the device, loads a `[]byte` image, and renders it
+2040W](https://shop.pimoroni.com/products/badger-2040) e-ink display.\ It sets up the device, loads a `[]byte` image, and renders it
 fullscreen.
 
 ## Features

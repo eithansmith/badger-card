@@ -30,7 +30,7 @@ func drawScreen(dev *device.Device) error {
 	return nil
 }
 
-// main (simple image) draws a single image as stored in output/simple
+// main (single image) draws a single image as stored in output/simple
 func main() {
 	var err error
 
@@ -48,6 +48,7 @@ func main() {
 func run(dev *device.Device) error {
 	var err error
 
+	// Init screen
 	dev.ClearBuffer()
 	err = dev.Display()
 	if err != nil {

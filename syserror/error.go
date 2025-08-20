@@ -23,7 +23,7 @@ func Write(dev *device.Device, errIn error) {
 	lineHeight := 16
 	for i, line := range lines {
 		y := startY + i*lineHeight
-		tinyfont.WriteLine(dev, &freemono.Regular9pt7b, 10, int16(y), line, color.RGBA{R: 1, G: 1, B: 1, A: 255}) // black text
+		tinyfont.WriteLine(dev, &freemono.Bold9pt7b, 10, int16(y), line, color.RGBA{R: 1, G: 1, B: 1, A: 255}) // black text
 	}
 
 	_ = dev.Display()

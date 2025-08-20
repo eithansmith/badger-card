@@ -25,7 +25,7 @@ fullscreen.
 ## Project Structure
 
     .
-    ├── button     # Button Manager (polling-based buttons (no interrupts)
+    ├── button     # Button Manager (polling-based buttons, no interrupts)
     ├── cmd        # Programs such as blink, single_img, slideshow
     ├── device     # Hardware setup (pins, SPI, display)
     ├── output     # Storage of PNG files and slice byte arrays
@@ -39,9 +39,9 @@ To build and flash directly to the Badger 2040W:
 tinygo flash -target=badger2040-w .
 ```
 
-## Modifying the Image
+## Modifying Images
 
-The bitmap stored in /output is defined in **`filename.go`**:
+Bitmap stored in /output is defined in **`filename.go`** (filename is a placeholder, use whatever name you prefer):
 
 ``` go
 
@@ -51,6 +51,8 @@ var FileName = []byte{ ... }
 You can replace this byte array with your own generated image data.\
 The example uses `pixel.NewImageFromBytes[pixel.Monochrome]` to
 interpret the slice.
+
+I wrote a separate Go program to help with the monochrome PNG to byte array conversion. You can find it [here](https://github.com/eithansmith/image2bytes).  
 
 ## Usage
 

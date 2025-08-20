@@ -39,7 +39,7 @@ func NewManager(onShort, onLong func(string)) *Manager {
 	}
 }
 
-// Polling-based buttons (no interrupts). A/B/C: PinInput; UP/DOWN: PinInputPulldown.
+// StartPolling buttons (no interrupts). A/B/C: PinInput; UP/DOWN: PinInputPulldown.
 // If any button acts inverted on your board, flip its Mode to PinInputPullup.
 func (m *Manager) StartPolling() {
 	for i := range m.btns {

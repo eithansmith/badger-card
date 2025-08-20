@@ -22,7 +22,7 @@ fullscreen.
 -   USB cable and flashing tool (`tinygo flash` or
     [picotool](https://github.com/raspberrypi/picotool)).
 
-## Project Modules
+## Project Structure
 
     .
     ├── button     # Button Manager (polling-based buttons (no interrupts)
